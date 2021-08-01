@@ -1,0 +1,61 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<body oncontextmenu="return false;">
+
+    
+    <main class="body-content">
+    <div class="ms-content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ms-panel">
+                  <div class="ms-panel-header">
+                    <h6>Update Product Details </h6>
+                  </div>
+                  <div class="ms-panel-body">
+                    <% if(product){ %>
+                        <form method="POST" action="/admin/update/<%= product.id %>" enctype="multipart/form-data"  >
+                            <div class="form-group">
+                              <label for="exampleEmail">Title or Name</label>
+                              <input type="text" name="name"  class="form-control" id="exampleEmail" value="<%= product.name %>" placeholder="Title or Name">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleEmail">Price</label>
+                              <input type="text" name="price"  class="form-control" id="exampleEmail" value="<%= product.price %>"placeholder="Price">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleTextarea">Description</label>
+                              <textarea class="form-control" name="description" id="exampleTextarea" rows="3" value="<%= product.description %>"></textarea>
+                            </div>
+      
+                            <div class="form-group">
+                              <label for="exampleSelect">Category</label>
+                              <select name="category" class="form-control" id="exampleSelect" value="<%= product.category %>">
+                                <option style="font-size: 1.3em;" disabled>Category</option>
+                                <option value="Breakfast"> Breakfast </option>
+                                <option value="Lunch"> Lunch </option>
+                                <option value="Dinner"> Dinner </option>
+                                <option value="Snacks"> Snacks </option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleSelect">Available</label>
+                              <select required name="isAvailable" class="form-control" id="exampleSelect" value="<%= product.isAvailable %>">
+                                <option style="font-size: 1.3em;" disabled>Available</option>
+                                <option value="available"> Available </option>
+                                <option value="notAvailable"> Not Available </option>
+                              </select>
+                            </div> 
+                            <div class="custom-file">
+                              <input type="file"  name="avatar" placeholder="upload image" value="<%= product.isAvailable %>" >
+                            </div>
+                            <input type="submit" class="btn btn-success d-block w-100" name="btn100" value="Submit">
+                          </form>
+                    <% }  %>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</main>
+
+<%- include('./partials/footer') %>
